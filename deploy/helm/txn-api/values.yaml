@@ -1,0 +1,27 @@
+replicaCount: 2
+
+image:
+  # txn-api-go or txn-api-python. Both images expose the same API and config.
+  repository: txn-api-go
+  tag: dev
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+# Application config, passed to the container as environment variables.
+config:
+  region: us-east1
+  # Fraction of requests (0-1) that fail with a simulated ledger error.
+  failRate: "0.05"
+  logLevel: info
+
+serviceAccount:
+  # Leave empty to use the namespace's default ServiceAccount.
+  name: ""
+
+podAnnotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/path: /metrics
+  prometheus.io/port: "8000"

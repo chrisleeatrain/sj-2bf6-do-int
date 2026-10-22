@@ -1,0 +1,14 @@
+# Objects that already exist in our real cluster but were never put in Terraform.
+# `make cluster` applies this after creating the kind cluster so the sandbox
+# starts out looking like production.
+---
+# Created by hand during the Q2 reporting incident. Still in use.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: txn-reports
+  labels:
+    owner: reporting
+    environment: prod
+  annotations:
+    created-by: "jsmith, by hand, during the Q2 reporting incident"

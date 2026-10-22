@@ -1,0 +1,6 @@
+apiVersion: v2
+name: txn-api
+description: Fake transactions API used for the platform exercise
+type: application
+version: 0.1.0
+appVersion: "dev"
